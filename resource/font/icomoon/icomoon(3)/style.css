@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?6fp7v7');
-	src:url('fonts/icomoon.eot?#iefix6fp7v7') format('embedded-opentype'),
-		url('fonts/icomoon.ttf?6fp7v7') format('truetype'),
-		url('fonts/icomoon.woff?6fp7v7') format('woff'),
-		url('fonts/icomoon.svg?6fp7v7#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-af9dox');
+	src:url('fonts/icomoon.eot?#iefix-af9dox') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-af9dox') format('truetype'),
+		url('fonts/icomoon.woff?-af9dox') format('woff'),
+		url('fonts/icomoon.svg?-af9dox#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +23,75 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-location3:before {
+	content: "\e61b";
+}
+.icon-calendar:before {
+	content: "\e619";
+}
+.icon-binoculars2:before {
+	content: "\e617";
+}
+.icon-mail-forward:before {
+	content: "\e604";
+}
+.icon-share:before {
+	content: "\e603";
+}
+.icon-in:before {
+	content: "\e61a";
+}
+.icon-exclamation:before {
+	content: "\e61c";
+}
+.icon-grid:before {
+	content: "\e61d";
+}
+.icon-menu2:before {
+	content: "\e61e";
+}
+.icon-pin-alt:before {
+	content: "\e61f";
+}
+.icon-checkmark:before {
+	content: "\e620";
+}
+.icon-x:before {
+	content: "\e621";
+}
+.icon-film:before {
+	content: "\e610";
+}
+.icon-file-text2:before {
+	content: "\e612";
+}
+.icon-location2:before {
+	content: "\e616";
+}
+.icon-clock:before {
+	content: "\e618";
+}
+.icon-plus:before {
+	content: "\e608";
+}
+.icon-cross:before {
+	content: "\e622";
+}
+.icon-play2:before {
+	content: "\e611";
+}
+.icon-youtube4:before {
+	content: "\e614";
+}
+.icon-star-1:before {
+	content: "\e623";
+}
+.icon-star-0:before {
+	content: "\e624";
+}
+.icon-star-2:before {
+	content: "\e625";
+}
 .icon-link-external:before {
 	content: "\e605";
 }
@@ -31,6 +100,9 @@
 }
 .icon-eye:before {
 	content: "\e607";
+}
+.icon-heart-o:before {
+	content: "\e626";
 }
 .icon-facebook-square:before {
 	content: "\e609";
@@ -53,20 +125,8 @@
 .icon-sign-out:before {
 	content: "\e60f";
 }
-.icon-uniE610:before {
-	content: "\e610";
-}
-.icon-uniE611:before {
-	content: "\e611";
-}
-.icon-check-circle-o:before {
-	content: "\e612";
-}
 .icon-eye2:before {
 	content: "\e613";
-}
-.icon-street-view:before {
-	content: "\e614";
 }
 .icon-refresh:before {
 	content: "\e615";
