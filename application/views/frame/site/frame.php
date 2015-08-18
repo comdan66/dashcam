@@ -16,20 +16,22 @@
     <nav>
       <div class='container'>
         <div class='logo'>LOGO</div>
-        <div class='search'>
-          <div class='bar'>
-            <input type='text' name='main_search' id='main_search' value='' placeholder='搜尋！' />
-            <label for='main_search' class='icon-search'></label>
-          </div>
+        <div class='left'>
+
         </div>
-        <div class='option icon-more' onClick='this.classList.toggle("show");' onmouseleave='this.classList.remove("show");'>
-          <div class='cover'></div>
-          <div class='menu i4'>
-            <a onClick='console.error (12);'>asd</a>
-            <a>asd</a>
-            <a>asd</a>
-            <a class='top_line'>asd</a>
+        <div class='right'>
+          
+          
+          <div class='option icon-more' onClick='this.classList.toggle("show");' onmouseleave='this.classList.remove("show");'>
+            <div class='cover'></div>
+            <div class='menu i4'>
+              <a onClick=''>asd</a>
+              <a>asd</a>
+              <a>asd</a>
+              <a class='top_line'>asd</a>
+            </div>
           </div>
+
         </div>
       </div>
     </nav>
@@ -42,21 +44,33 @@
 
           <div class='title'>主選單</div>
           <div class='group'>
-            <a href='' class='icon-home'>首頁</a>
-            <a href='' class='icon-search'>搜尋</a>
-            <a href='' class='icon-menu'>選單</a>
-            <a href='' class='icon-home'>首頁</a>
-            <a href='' class='icon-search'>搜尋</a>
-            <a href='' class='icon-menu'>選單</a>
+            <a href='' class='icon-link-external'>首頁</a>
+            <a href='' class='icon-link'>搜尋</a>
+            <a href='' class='icon-eye'>選單</a>
+            <a href='' class='icon-facebook-square'>首頁</a>
+            <a href='' class='icon-chevron-right'>搜尋</a>
+            <a href='' class='icon-chevron-left'>選單</a>
           </div>
 
-          <div class='title'>次選單</div>
+
+          <div class='title'>主選單</div>
           <div class='group'>
-            <a href='' class='icon-home'>首頁</a>
-            <a href='' class='icon-search'>搜尋</a>
-            <a href='' class='icon-menu'>選單</a>
-            <a href='' class='icon-menu'>選單</a>
+            <a href='' class='icon-location'>首頁</a>
+            <a href='' class='icon-heart'>搜尋</a>
+            <a href='' class='icon-arrow-right'>選單</a>
+            <a href='' class='icon-sign-out'>首頁</a>
+            <a href='' class='icon-uniE610'>搜尋</a>
+            <a href='' class='icon-uniE611'>選單</a>
           </div>
+
+
+          <div class='title'>主選單</div>
+          <div class='group'>
+            <a href='' class='icon-check-circle-o'>首頁</a>
+            <a href='' class='icon-eye2'>搜尋</a>
+            <a href='' class='icon-street-view'>選單</a>
+          </div>
+
 
         </div>
         <div class='wrapper_right'>s</div>
