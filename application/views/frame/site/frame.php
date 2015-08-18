@@ -22,7 +22,8 @@
         <div class='right'>
           
           
-          <div class='option icon-more' onClick='this.classList.toggle("show");' onmouseleave='this.classList.remove("show");'>
+          
+          <div class='option icon-more white' onClick='this.classList.toggle("show");' onmouseleave='this.classList.remove("show");'>
             <div class='cover'></div>
             <div class='menu i4'>
               <a onClick=''>asd</a>
@@ -40,7 +41,8 @@
 
     <div id='container'>
       <div class='wrapper'>
-        <div class='wrapper_left'>
+        <div class='wrapper_left '>
+          <div class='logo'>Logo</div>
 
           <div class='title'>主選單</div>
           <div class='group'>
@@ -73,10 +75,18 @@
 
 
         </div>
-        <div class='wrapper_right'>s</div>
+        <div class='cover'></div>
+        <div class='wrapper_right'>
+          ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br/>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br/>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br/>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br/>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br/>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<br/>
+        </div>
       </div>
     </div>
 
+    <div id="footer">
+      <div class="l"></div>
+      <div class="c"><div>ERD © 2015</div><div>如有相關問題歡迎與<a href="https://www.facebook.com/comdan66" target="_blank">作者</a>討論。</div></div>
+      <div class="r"></div>
+    </div>
     <!-- <?php echo isset ($content) ? $content : ''; ?> -->
   </body>
 </html>

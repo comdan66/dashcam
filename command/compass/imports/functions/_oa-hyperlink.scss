@@ -10,6 +10,7 @@
   font-weight: normal;
   text-decoration: none;
   padding: 2px;
+  padding-top: 0;
   padding-bottom: $underLineHeight;
   @include transition(all .3s);
 
