@@ -57,7 +57,7 @@
 
           <div class='title'>次選單</div>
           <div class='group'>
-            <a href='' class='icon-home'>首頁</a>
+            <a href='' class='icon-home'>文章</a>
             <a href='' class='icon-binoculars2'>尋找</a>
             <a href='' class='icon-location'>地圖</a>
             <a href='' class='icon-play2'>影片</a>
