@@ -7,9 +7,10 @@
 
 $navHeight: 55px;
 $wrapperLeftWidth: 250px;
-$rightWidth: 150px;
+$navRightWidth: 110px;
 $mobileHeight: 75px;
 $mobileHorizontalPadding: 10px;
+$mobileVerticalPadding: 15px;
 
 html {
   body {
@@ -33,6 +34,7 @@ html {
       }
       .container {
         width: 100%;
+        height: 100%;
         max-width: $mainWidth;
         display: inline-block;
         @include clearfix();
@@ -44,20 +46,78 @@ html {
         }
         .logo {
           width: $wrapperLeftWidth;
+          height: 100%;
           font-size: 33px;
           color: rgba(255, 255, 255, 1);
           font-weight: bolder;
+          line-height: 45px;
+          letter-spacing: 5px;
+          @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
+            width: 0;
+            display: none;
+          }
         }
         .left {
           text-align: left;
-          width: calc(100% - #{$wrapperLeftWidth + $rightWidth});
+          width: calc(100% - #{$wrapperLeftWidth + $navRightWidth});
+
+          @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
+            width: calc(100% - #{0 + $navRightWidth});
+          }
+
+          > div {
+            position: relative;
+            float: left;
+            display: inline-block;
+            height: 40px;
+            margin-top: 3px;
+            text-align: center;
+            @include text-shadow(0 0 1px rgba(39, 40, 34, .65));
+            color: rgba(255, 255, 255, .9);
+            font-weight: bold;
+            font-size: 30px;
+            @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+              margin-top: 10px;
+              font-size: 25px;
+            }
+            &[class*="icon-"] {
+              width: 40px;
+              margin-top: 5px;
+              font-size: 35px;
+              @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+                margin-top: 10px;
+                font-size: 30px;
+              }
+            }
+            + div {
+              margin-left: 5px;
+            }
+
+            &.option {
+              @media screen and (min-width: $mediaTabletWidth) {
+                display: none;
+              }
+            }
+            &.title {
+              width: calc(100% - 40px - 5px);
+              text-align: left;
+              @include overflow-docx3();
+              @media screen and (min-width: $mediaTabletWidth) {
+                padding-top: 7px;
+                font-size: 25px;
+              }
+            }
+          }
         }
         .right {
           position: relative;
           float: right;
-          width: $rightWidth;
+          width: $navRightWidth;
 
-          > div {
+          @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
+            width: $navRightWidth;
+          }
+          > div[class*="icon-"] {
             position: relative;
             float: right;
             display: inline-block;
@@ -66,6 +126,10 @@ html {
             margin-top: 5px;
             line-height: 38px;
             font-size: 25px;
+            @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+              margin-top: 6px;
+              font-size: 23px;
+            }
             color: rgba(0, 67, 60, 1);
             cursor: pointer;
             @include text-shadow(0 -1px 2px rgba(255, 255, 255, .3));
@@ -80,54 +144,138 @@ html {
             &.white {
               color: rgba(255, 255, 255, .85);
               @include text-shadow(0 0 1px rgba(39, 40, 34, .65));
-              
+
               &:hover {
                 color: rgba(255, 255, 255, 1);
               }
             }
+
+            &.option {
+              $menuCount: 5;
+              $menuPadding: 0;
+              $menuWidth: 170px;
+              $menuHeight: 40px;
+
+              &:before {
+                display: inline-block;
+                @include transition(all .5s);
+                @include transform(rotate(90deg) scale(1));
+              }
+              &.show {
+                &:before {
+                  @include transform(rotate(270deg) scale(0));
+                  @include opacity(0);
+                }
+                .cover {
+                  display: inline-block;
+                }
+                .menu {
+                  width: $menuWidth;
+                  height: $menuHeight * $menuCount + $menuPadding * 2 + 2px;
+                  padding: $menuPadding;
+                  @include opacity(1);
+
+                  @for $i from 1 through 10 {
+                    &.i#{$i} {
+                      height: $menuHeight * $i + $menuPadding * 2 + 5px;
+                    }
+                  }
+                }
+              }
+              .cover {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+                z-index: 9995;
+                background-color: rgba(39, 40, 34, .1);
+                cursor: auto;
+              }
+              .menu {
+                position: absolute;
+                right: 5px;
+                top: 0;
+                display: inline-block;
+                width: calc(100% - 10px);
+                height: calc(100%);
+                padding: 0;
+                overflow: hidden;
+
+                background-color: rgba(255, 255, 255, 1);
+                border: 1px solid rgba(39, 40, 34, .3);
+                @include border-radius(2px);
+                @include box-shadow(0 1px 2px rgba(39, 40, 34, .2));
+
+                z-index: 9999;
+
+                @include transition(all .3s);
+                @include opacity(0);
+
+                a {
+                  @include a(0, false, rgba(36, 36, 36, .6), rgba(36, 36, 36, .8));
+                  display: block;
+                  width: 100%;
+                  font-size: 13px;
+                  margin: 0;
+                  @include text-shadow(none);
+                  height: $menuHeight;
+                  line-height: $menuHeight - 5px;
+
+                  &.top_line {
+                    margin-top: 3px;
+                    border-top: 1px solid rgba(39, 40, 34, .15);
+                  }
+                }
+              }
+            }
+
           }
         }
       }
     }
 
-    .main_ball {
-      position: fixed;
-      bottom: 50px;
-      right: 50px;
-      display: inline-block;
-      width: 60px;
-      height: 60px;
-      background-color: rgba(0, 149, 135, 1);
-      font-size: 40px;
-      line-height: 60px;
-      color: rgba(255, 255, 255, .9);
-      z-index: 99999;
-      @media screen and (min-width: 0) and (max-width: #{$mainWidth - 1px}) {
-        right: 40px;
-        bottom: 40px;
-
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-      }
-      @include transition(all .3s);
-      @include border-radius(50%);
-      @include box-shadow(0 5px 7px 1px rgba(39, 40, 34, .3), inset 0 1px 2px rgba(255, 255, 255, .4));
-    }
-
-
     #container {
-      display: table;
+      @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
+        display: block;
+      }
+      @media screen and (min-width: $mediaTabletWidth) {
+        display: table;
+        min-height: 100%;
+      }
       width: 100%;
       max-width: $mainWidth;
-      min-height: 100%;
+
+      &.show {
+        .wrapper {
+          .wrapper_left {
+            left: 0;
+            @include box-shadow(0 0 5px 1px rgba(39, 40, 34, .3), 1px 0 1px rgba(39, 40, 34, .3));
+            @include opacity(1);
+          }
+          .cover {
+            right: 0;
+            @include opacity(1);
+          }
+        }
+      }
 
       .wrapper {
-        display: table-row;
+        position: relative;
+        @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
+          display: block;
+        }
+        @media screen and (min-width: $mediaTabletWidth) {
+          display: table-row;
+        }
 
         .wrapper_left, .wrapper_right {
           position: relative;
           display: table-cell;
+          @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
+            display: block;
+          }
         }
 
         .wrapper_left {
@@ -138,45 +286,36 @@ html {
 
           @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
             position: fixed;
-            left: 0 - $wrapperLeftWidth;
+            left: 0 - $wrapperLeftWidth - 2px;
             top: 0;
             display: inline-block;
             height: 100%;
             overflow-y: auto;
+            z-index: 999999;
+            border: 0;
             -webkit-overflow-scrolling: touch;
             background: $mainBackgroundColor $mainBackgroundImage;
-            @include transition(left .3s);
-
-            &.show {
-              left: 0;
-              z-index: 999999;
-              @include box-shadow(0 0 5px 1px rgba(39, 40, 34, .3), 1px 0 1px rgba(39, 40, 34, .3));
-              
-              .logo {
-                display: inline-block;
-                color: rgba(255, 255, 255, 1);
-                font-weight: bolder;
-                font-size: 40px;
-                line-height: 52px;
-                background-color: rgba(0, 148, 134, 1);
-              }
-
-              + .cover {
-                right: 0;
-                display: inline-block;
-              }
-            }
+            @include transition(all .3s);
           }
 
           .logo {
-            display: none;
+            display: inline-block;
             width: 100%;
             height: $mobileHeight;
+            color: rgba(255, 255, 255, 1);
+            font-weight: bolder;
+            font-size: 40px;
+            line-height: 52px;
+            background-color: rgba(0, 148, 134, 1);
+            @media screen and (min-width: $mediaTabletWidth) {
+              display: none;
+            }
           }
           .title {
             text-align: left;
             padding: 5px;
             margin-top: 10px;
+            height: 30px;
             font-weight: bold;
           }
           .group {
@@ -238,7 +377,9 @@ html {
           height: 100%;
           background-color: rgba(39, 40, 34, .5);
           z-index: 999998;
-          @include transition(right .3s);
+          @include opacity(0);
+          @include transition(all .3s);
+
           @media screen and (min-width: $mediaTabletWidth) {
             width: 0;
             display: none;
@@ -248,11 +389,14 @@ html {
           background-color: rgba(255, 255, 255, 1);
           border-bottom: 1px solid rgba(39, 40, 34, .25);
           @include box-shadow(0 0 3px 1px rgba(39, 40, 34, .2));
-          
+
           @media screen and (min-width: 0px) and (max-width: #{$mediaTabletWidth - 1px}) {
             width: 100%;
             word-break: break-all;
-            padding: 10px $mobileHorizontalPadding;
+            padding: $mobileVerticalPadding $mobileHorizontalPadding;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
           }
           @media screen and (min-width: $mediaTabletWidth) {
             z-index: 995;
@@ -268,12 +412,50 @@ html {
       }
     }
 
+    #action {
+      position: fixed;
+      display: inline-block;
+      background-color: rgba(0, 149, 135, 1);
+      font-size: 18px;
+      color: rgba(255, 255, 255, .9);
+      z-index: 99999;
+      cursor: pointer;
+      @include transition(all .3s);
+      @include border-radius(50%);
+      @include box-shadow(0 5px 7px 1px rgba(39, 40, 34, .3), inset 0 1px 2px rgba(255, 255, 255, .4));
+
+      @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+        right: 20px;
+        bottom: 30px;
+        width: 44px;
+        height: 44px;
+        line-height: 40px;
+        @include box-shadow(0 3px 4px 1px rgba(39, 40, 34, .25), inset 0 1px 2px rgba(255, 255, 255, .4));
+      }
+      @media screen and (min-width: $mediaMobileWidth) and (max-width: #{$mainWidth - 1px}) {
+        right: 40px;
+        bottom: 40px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+      }
+      @media screen and (min-width: #{$mainWidth + 40px}) {
+        right: 50px;
+        bottom: 50px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+      }
+    }
     #footer {
       $footerWidth: 250px;
 
       margin: 0 auto;
       padding: 50px 0;
       padding-top: 100px;
+      @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+        padding-top: 50px;
+      }
       @include clearfix();
 
       > div {
@@ -303,6 +485,132 @@ html {
               }
             }
           }
+        }
+      }
+    }
+
+    #loading {
+      $offset: 187;
+      $duration: 1.4s;
+      $width: 80px;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      z-index: 9999999;
+      border: 1px solid rgba(255, 0, 0, .3);
+      background-color: rgba(39, 39, 34, .85);
+
+      &.hide {
+        .svg {
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          @include animation(rotator $duration linear infinite, hide .5s);
+        }
+      }
+
+      .svg {
+        position: absolute;
+        top: calc(50% - #{$width / 2});
+        left: calc(50% - #{$width / 2});
+        width: $width;
+        height: $width;
+        @include animation(rotator $duration linear infinite, show .8s);
+        @include transition(all 1s);
+
+        .path {
+          stroke-dasharray: $offset;
+          stroke-dashoffset: 0;
+          transform-origin: center;
+          @include animation(dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite);
+        }
+      }
+
+      @keyframes hide {
+        0% {
+          top: calc(50% - #{$width / 2});
+          left: calc(50% - #{$width / 2});
+          width: $width;
+          height: $width;
+        }
+        15% {
+          $a: 0.8;
+          top: calc(50% - #{($width * $a) / 2});
+          left: calc(50% - #{($width * $a) / 2});
+          width: $width * $a;
+          height: $width * $a;
+        }
+        30% {
+          $a: 1.3;
+          top: calc(50% - #{($width * $a) / 2});
+          left: calc(50% - #{($width * $a) / 2});
+          width: $width * $a;
+          height: $width * $a;
+        }
+        100% {
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+        }
+      }
+
+      @keyframes show {
+        0% {
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+        }
+        30% {
+          $a: 1.3;
+          top: calc(50% - #{($width * $a) / 2});
+          left: calc(50% - #{($width * $a) / 2});
+          width: $width * $a;
+          height: $width * $a;
+        }
+        75% {
+          $a: 0.8;
+          top: calc(50% - #{($width * $a) / 2});
+          left: calc(50% - #{($width * $a) / 2});
+          width: $width * $a;
+          height: $width * $a;
+        }
+        100% {
+          top: calc(50% - #{$width / 2});
+          left: calc(50% - #{$width / 2});
+          width: $width;
+          height: $width;
+        }
+      }
+      @keyframes rotator {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(270deg); }
+      }
+
+      @keyframes colors {
+        0% { stroke: rgba(244, 67, 54, 1); }
+        20% { stroke: rgba(255, 152, 0, 1); }
+        40% { stroke: rgba(255, 235, 59, 1); }
+        60% { stroke: rgba(76, 175, 80, 1); }
+        80% { stroke: rgba(33, 150, 243, 1); }
+        100% { stroke: rgba(156, 39, 176, 1); }
+      }
+
+      @keyframes dash {
+        0% { stroke-dashoffset: $offset; }
+        50% {
+          stroke-dashoffset: $offset/4;
+          @include transform(rotate(135deg));
+        }
+        100% {
+          stroke-dashoffset: $offset;
+          @include transform(rotate(450deg));
         }
       }
     }
@@ -365,81 +673,8 @@ html {
   }
 }
 
-$menuCount: 5;
-$menuPadding: 0;
-$menuWidth: 170px;
-$menuHeight: 40px;
-.option {
-  &:before {
-    display: inline-block;
-    @include transform(rotate(90deg) scale(1));
-  }
-  &.show {
-    &:before {
-      @include transform(rotate(270deg) scale(0));
-      @include opacity(0);
-    }
-    .cover {
-      display: inline-block;
-    }
-    .menu {
-      width: $menuWidth;
-      height: $menuHeight * $menuCount + $menuPadding * 2 + 2px;
-      padding: $menuPadding;
-      @include opacity(1);
+nav {
+  .right {
 
-      @for $i from 1 through 10 {
-        &.i#{$i} {
-          height: $menuHeight * $i + $menuPadding * 2 + 5px;
-        }
-      }
-    }
-  }
-  .cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 9995;
-    background-color: rgba(39, 40, 34, .1);
-    cursor: auto;
-  }
-  .menu {
-    position: absolute;
-    right: 5px;
-    top: 0;
-    display: inline-block;
-    width: calc(100% - 10px);
-    height: calc(100%);
-    padding: 0;
-    overflow: hidden;
-
-    background-color: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(39, 40, 34, .3);
-    @include border-radius(2px);
-    @include box-shadow(0 1px 2px rgba(39, 40, 34, .2));
-
-    z-index: 9999;
-
-    @include transition(all .3s);
-    @include opacity(0);
-
-    a {
-      @include a(0, false, rgba(36, 36, 36, .6), rgba(36, 36, 36, .8));
-      display: block;
-      width: 100%;
-      font-size: 13px;
-      margin: 0;
-      @include text-shadow(none);
-      height: $menuHeight;
-      line-height: $menuHeight - 5px;
-
-      &.top_line {
-        margin-top: 3px;
-        border-top: 1px solid rgba(39, 40, 34, .15);
-      }
-    }
   }
 }
