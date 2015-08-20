@@ -13,41 +13,17 @@
   <body lang="zh-tw">
     <?php echo isset ($hidden_list) ? $hidden_list : ''; ?>
 
-    <nav>
-      <div class='container'>
-        <div class='logo'>LOGO</div>
-        <div class='left'>
-          <div class='option icon-menu'></div>
-          <div class='title'>標題 Title</div>
-        </div>
-        <div class='right'>
-
-
-          <div class='option icon-more white'>
-            <div class='cover'></div>
-            <div class='menu i4'>
-              <a onClick=''>item 1</a>
-              <a>item 2</a>
-              <a>item 3</a>
-              <a class='top_line'>item 4</a>
-            </div>
-          </div>
-
-          <div class='icon-search'></div>
-
-        </div>
-      </div>
-    </nav>
+    <?php //echo render_cell ('site_cell', 'nav');?>
 
 
     <div id='container'>
       <div class='wrapper'>
         <div class='wrapper_left '>
-          <?php echo render_cell ('site_cell', 'wrapper_left');?>
+          <?php //echo render_cell ('site_cell', 'wrapper_left');?>
         </div>
         <div class='cover'></div>
         <div class='wrapper_right'>
-          content
+          <?php echo isset ($content) ? $content : ''; ?>
         </div>
       </div>
     </div>
@@ -65,6 +41,6 @@
          <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
       </svg>
     </div>
-    <!-- <?php echo isset ($content) ? $content : ''; ?> -->
+
   </body>
 </html>

@@ -405,7 +405,7 @@ html {
           @media screen and (min-width: $mediaTabletWidth) {
             z-index: 995;
             border-left: 1px solid rgba(39, 40, 34, .25);
-            padding: 10px 5px;
+            padding: 10px 10px;
             @include border-bottom-left-radius(3px);
           }
           @media screen and (min-width: #{$mainWidth + 40px}) {
