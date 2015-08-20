@@ -43,28 +43,7 @@
     <div id='container'>
       <div class='wrapper'>
         <div class='wrapper_left '>
-          <div class='logo'>Logo</div>
-
-          <div class='title'>主選單</div>
-          <div class='group'>
-            <a href='' class='icon-home'>首頁</a>
-            <a href='' class='icon-binoculars2'>尋找</a>
-            <a href='' class='icon-location'>地圖</a>
-            <a href='' class='icon-play2'>影片</a>
-            <a href='' class='icon-sign-out'>登出</a>
-          </div>
-
-
-          <div class='title'>次選單</div>
-          <div class='group'>
-            <a href='' class='icon-home'>文章</a>
-            <a href='' class='icon-binoculars2'>尋找</a>
-            <a href='' class='icon-location'>地圖</a>
-            <a href='' class='icon-play2'>影片</a>
-            <a href='' class='icon-sign-out'>登出</a>
-          </div>
-
-
+          <?php echo render_cell ('site_cell', 'wrapper_left');?>
         </div>
         <div class='cover'></div>
         <div class='wrapper_right'>

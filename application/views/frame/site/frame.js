@@ -27,7 +27,5 @@ $(function () {
     $(this).toggleClass ('show');
   });
 
-  setTimeout (function () {
-    window.closeLoading ();
-  }, 2000);
+  window.closeLoading ();
 });
