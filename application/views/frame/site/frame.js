@@ -9,6 +9,8 @@ $(function () {
   var $rightOption = $('nav .right .option');
   var $wrapperCover = $container.find ('.cover');
   var overflow = $('body').css ('overflow');
+  
+  // $('#action').hide ();
 
   $leftOption.click (function () {
     if ($container.hasClass ('show')) {
@@ -27,5 +29,5 @@ $(function () {
     $(this).toggleClass ('show');
   });
 
-  window.closeLoading ();
+  $('#dialog_input').show ();
 });

@@ -405,7 +405,7 @@ html {
           @media screen and (min-width: $mediaTabletWidth) {
             z-index: 995;
             border-left: 1px solid rgba(39, 40, 34, .25);
-            padding: 10px 10px;
+            padding: 20px;
             @include border-bottom-left-radius(3px);
           }
           @media screen and (min-width: #{$mainWidth + 40px}) {
@@ -499,6 +499,107 @@ html {
       left: 0;
 
       @include loading();
+    }
+
+    #dialog_input {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      z-index: 99999;
+      text-align: center;
+      display: none;
+
+      .cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(39, 40, 34, .5);
+      }
+      .wrapper {
+        position: absolute;
+        top: calc(20%);
+        left: calc(50% - (350px / 2));
+        display: inline-block;
+        width: 350px;
+        height: 170px;
+        background-color: white;
+        border: 1px solid rgba(39, 40, 34, .6);
+        @include box-shadow(0 3px 25px rgba(39, 40, 34, .5));
+        @include border-radius(3px);
+        @media screen and (min-width: 0) and (max-width: #{$mediaTabletWidth - 1px}) {
+          left: 20px;
+          width: calc(100% - 40px);
+        }
+
+        .title {
+          padding: 18px;
+          padding-bottom: 10px;
+          
+          text-align: left;
+          color: rgba(39, 40, 34, .8);
+          font-weight: bold;
+          border-bottom: 1px solid rgba(39, 40, 34, .1);
+        }
+        .content {
+          position: relative;
+          padding: 0 18px;
+          margin-top: 15px;
+          text-align: left;
+          
+          input {
+            @include input();
+            width: 100%;
+            margin-top: 15px;
+  
+            &, &:focus {
+              border-top: 0;
+              border-left: 0;
+              border-right: 0;
+              @include box-shadow(none);
+            }
+            &:focus {
+              + label {
+                top: 0;
+                font-size: 13px;
+                color: rgba(9, 111, 202, 1);
+              }
+            }
+            @include border-radius(0);
+          }
+          label {
+            position: absolute;
+            top: 15px;
+            left: 18px;
+            display: inline-block;
+            color: rgba(0, 0, 0, 0.26);
+            cursor: text;
+            @include transition(all .2s);
+          }
+        }
+        .btns {
+          padding: 0 10px;
+          margin-top: 24px;
+          margin-bottom: 6px;
+          height: 30px;
+          @include clearfix();
+
+          a {
+            @include a();
+            float: right;
+            margin-top: 5px;
+            cursor: pointer;
+            + a {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
     }
   }
 }

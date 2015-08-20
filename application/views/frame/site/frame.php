@@ -13,13 +13,13 @@
   <body lang="zh-tw">
     <?php echo isset ($hidden_list) ? $hidden_list : ''; ?>
 
-    <?php //echo render_cell ('site_cell', 'nav');?>
+    <?php echo render_cell ('site_cell', 'nav');?>
 
 
     <div id='container'>
       <div class='wrapper'>
         <div class='wrapper_left '>
-          <?php //echo render_cell ('site_cell', 'wrapper_left');?>
+          <?php echo render_cell ('site_cell', 'wrapper_left');?>
         </div>
         <div class='cover'></div>
         <div class='wrapper_right'>
@@ -40,6 +40,21 @@
       <svg class="svg" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
          <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
       </svg>
+    </div>
+
+    <div id='dialog_input'>
+      <div class='cover'></div>
+      <div class='wrapper'>
+        <div class='title'>請輸入名稱吧！</div>
+        <div class='content'>
+          <input id='dialog_input_input'>
+          <label for='dialog_input_input'>名稱</label>
+        </div>
+        <div class='btns'>
+          <a>確定</a>
+          <a>取消</a>
+        </div>
+      </div>
     </div>
 
   </body>

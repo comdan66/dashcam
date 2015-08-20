@@ -5,44 +5,316 @@
 
 @import "_oa";
 
-#content {
-  .tags {
-    @include clearfix();
-    border: 1px solid rgba(255, 0, 0, .3);
+.wrapper_right {
 
-    label {
-      position: relative;
-      float: left;
+  #content {
+    h1, h2 {
+      text-align: left;
+    }
+    h1 {
+      margin-bottom: 5px;
+      @media screen and (min-width: 0) and (max-width: #{$mediaTabletWidth - 1px}) {
+        font-size: 25px;
+      }
+    }
+    h2 {
+      margin-top: 5px;
+      font-size: 18px;
+      &.mobile {
+        display: none;
+      }
+      @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+        font-size: 14px;
+        &.mobile {
+          display: block;
+        }
+        &:not(.mobile) {
+          display: none;
+        }
+      }
+      @media screen and (min-width: $mediaMobileWidth) and (max-width: #{$mediaTabletWidth - 1px}) {
+        font-size: 16px;
+      }
+    }
+    .tags {
       display: inline-block;
-      cursor: pointer;
-      margin: 5px;
+      margin-top: 50px;
+      @include clearfix();
+      @media screen and (min-width: 0) and (max-width: #{300px - 1px}) {
+        width: 100%;
+        .add, label {
+          width: 100% !important;
+          margin: 0 !important;
+        }
+        label {
+          margin-top: 20px !important;
+        }
+      }
+      @media screen and (min-width: 300px) and (max-width: #{440px - 1px}) {
+        width: 280px;
+      }
+      @media screen and (min-width: 440px) and (max-width: #{580px - 1px}) {
+        width: 420px;
+      }
+      @media screen and (min-width: 580px) and (max-width: #{720px - 1px}) {
+        width: 560px;
+      }
+      @media screen and (min-width: 720px) and (max-width: #{860px - 1px}) {
+        width: 700px;
+      }
+      @media screen and (min-width: 860px) and (max-width: #{960px - 1px}) {
+        width: 840px;
+      }
+      @media screen and (min-width: 960px) and (max-width: #{1131px - 1px}) {
+        width: 700px;
+      }
+      @media screen and (min-width: 1131px) and (max-width: #{1271px - 1px}) {
+        width: 840px;
+      }
+      @media screen and (min-width: 1271px) and (max-width: #{1411px - 1px}) {
+        width: 980px;
+      }
+      @media screen and (min-width: 1411px) and (max-width: #{1551px - 1px}) {
+        width: 1120px;
+      }
+      @media screen and (min-width: 1551px) {
+        width: 1260px;
+      }
 
-      input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        @include opacity(0);
+      .add {
+        margin: 10px;
+        width: 260px;
+        height: 140px;
+        float: left;
+        position: relative;
+        display: inline-block;
+        border: 1px dashed rgba(190, 191, 189, .8);
+        background-color: rgba(255, 255, 255, .4);
+        cursor: pointer;
+        @include transition(all .3s);
+        @include border-radius(5px);
 
-        &:checked {
-          + div {
-            color: rgba(250, 250, 250, 1);
-            border: 3px solid rgba(125, 126, 122, 1);
-            background-color: rgba(125, 126, 122, 1);
+        &:before, &:after {
+          content: "";
+          position: absolute;
+          top: calc((100% - 3px) / 2 - 15px);
+          left: calc((100% - 45px) / 2);
+          display: inline-block;
+          width: 45px;
+          height: 3px;
+          background-color: rgba(140, 140, 140, 1);
+          @include border-radius(2px);
+          @include transition(all .3s);
+        }
+        
+        &:after {
+          top: calc((100% - 45px) / 2 - 15px);
+          left: calc((100% - 3px) / 2);
+          width: 3px;
+          height: 45px;
+        }
+
+        &:hover {
+          border: 2px dashed rgba(190, 191, 189, 1);
+          background-color: rgba(255, 255, 255, 1);
+
+          &:before, &:after {
+            background-color: rgba(162, 162, 162, 1);
+          }
+          &:before {
+            top: calc((100% - 6px) / 2 - 15px);
+            height: 6px;
+          }
+          
+          &:after {
+            left: calc((100% - 6px) / 2);
+            width: 6px;
+          }
+
+          > div {
+            border: 5px solid rgba(162, 162, 162, 1);
+
+            &:nth-child(1) {
+              top: -2px;
+              left: -2px;
+            }
+            &:nth-child(2) {
+              top: -2px;
+              right: -2px;
+            }
+            &:nth-child(3) {
+              bottom: -2px;
+              left: -2px;
+            }
+            &:nth-child(4) {
+              bottom: -2px;
+              right: -2px;
+            }
+            &:nth-child(5) {
+              color: rgba(50, 50, 50, 0.8);
+            }
+          }
+        }
+        > div {
+          position: absolute;
+          display: inline-block;
+          width: 45px;
+          height: 34px;
+          border: 3px solid rgba(142, 143, 140, 1);
+          @include transition(all .3s);
+
+          &:nth-child(1) {
+            top: -1px;
+            left: -1px;
+            border-right: 0;
+            border-bottom: 0;
+            @include border-top-left-radius(5px);
+          }
+          &:nth-child(2) {
+            top: -1px;
+            right: -1px;
+            border-left: 0;
+            border-bottom: 0;
+            @include border-top-right-radius(5px);
+          }
+          &:nth-child(3) {
+            bottom: -1px;
+            left: -1px;
+            border-right: 0;
+            border-top: 0;
+            @include border-bottom-left-radius(5px);
+          }
+          &:nth-child(4) {
+            bottom: -1px;
+            right: -1px;
+            border-left: 0;
+            border-top: 0;
+            @include border-bottom-right-radius(5px);
+          }
+          &:nth-child(5) {
+            bottom: 10px;
+            left: 0;
+            border: 0;
+            width: 100%;
+            color: rgba(50, 50, 50, 0.4);
+            letter-spacing: 1px;
+            @include overflow-docx3();
           }
         }
       }
-
-      > div {
+      label {
+        position: relative;
+        float: left;
         display: inline-block;
-        width: 100px;
-        height: 55px;
-        line-height: 50px;
-        font-size: 23px;
-        color: rgba(125, 126, 122, 1);
-        font-weight: bold;
-        border: 3px solid rgba(125, 126, 122, .7);
+        cursor: pointer;
+        margin: 10px;
+        width: 120px;
+        height: 60px;
+
+        input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          @include opacity(0);
+
+          &:checked {
+            + div {
+              color: rgba(250, 250, 250, 1);
+              border: 3px solid rgba(0, 149, 135, 1);
+              background-color: rgba(72, 181, 172, 1);
+              @include text-shadow(1px 1px 4px rgba(0, 0, 0, .3));
+              @include box-shadow(inset 1px 1px 3px rgba(0, 0, 0, .2));
+            }
+          }
+        }
+
+        > div {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          line-height: 50px;
+          font-size: 23px;
+          color: rgba(0, 118, 104, .8);
+          font-weight: bold;
+          border: 3px solid rgba(0, 119, 105, .7);
+          @include transition(all .3s);
+          @include border-radius(5px);
+        }
+      }
+    }
+    .steps {
+      margin-top: 70px;
+      margin-bottom: 30px;
+      padding: 0 50px;
+      @include clearfix();
+      @media screen and (min-width: 0px) and (max-width: #{320px - 1px}) {
+        padding: 0;
+        button {
+          width: 50% !important;
+          font-size: 20px !important;
+        }
+      }
+      @media screen and (min-width: 320px) and (max-width: #{$mediaMobileWidth - 1px}) {
+        padding: 0;
+        button {
+          width: 45% !important;
+          font-size: 25px !important;
+        }
+      }
+      @media screen and (min-width: $mediaMobileWidth) and (max-width: #{$mediaTabletWidth - 1px}) {
+        padding: 0 30px;
+      }
+      button {
+        width: 200px;
+        font-size: 30px;
+        padding-bottom: 15px;
+        color: rgba(28, 165, 153, 1);
+        border: 0;
+        border-bottom: 3px solid transparent;
+        background-color: transparent;
+        cursor: pointer;
+        @include box-shadow(none);
+        @include overflow-docx3();
+        @include border-radius(0);
+        @include text-shadow(none);
         @include transition(all .3s);
-        @include border-radius(5px);
+
+        &:focus {
+          outline: 0;
+        }
+        &:hover {
+          color: rgba(0, 148, 134, 1);
+          border-color: rgba(0, 148, 134, 1);
+          background-color: transparent;
+          @include text-shadow(none);
+          @include box-shadow(none);
+        }
+        &:first-child {
+          float: left;
+          text-align: left;
+          padding-left: 10px;
+
+          &:before {
+            content: "\e60b";
+            font-family: 'icomoon';
+            display: inline-block;
+            margin-top: 4px;
+            margin-right: 15px;
+          }
+        }
+        &:last-child {
+          float: right;
+          text-align: right;
+          padding-right: 10px;
+
+          &:after {
+            content: "\e60a";
+            font-family: 'icomoon';
+            display: inline-block;
+            margin-top: 4px;
+            margin-left: 15px;
+          }
+        }
       }
     }
   }
