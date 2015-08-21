@@ -501,16 +501,79 @@ html {
       @include loading();
     }
 
-    #dialog_input {
+    .OAprompt {
       position: fixed;
       top: 0;
       left: 0;
-      display: inline-block;
       width: 100%;
       height: 100%;
       z-index: 99999;
       text-align: center;
       display: none;
+
+      &.hide_animation {
+        .cover {
+          @include opacity(0);
+          @include animation(OApromptCoverHide .5s);
+          @include keyframes(OApromptCoverHide) {
+            0% {
+              @include opacity(1);
+            }
+            100% {
+              @include opacity(0);
+            }
+          }
+        }
+        .wrapper {
+          top: -50%;
+          @include opacity(0);
+
+          @include animation(OApromptWrapperHide .3s);
+          @include keyframes(OApromptWrapperHide) {
+            0% {
+              top: calc(20%);
+              @include opacity(1);
+            }
+            100% {
+              top: -50%;
+              @include opacity(0);
+            }
+          }
+        }
+      }
+      &.show {
+        display: inline-block;
+      }
+      &.show_animation {
+        .cover {
+          @include opacity(1);
+          @include animation(OApromptCoverShow .5s);
+          @include keyframes(OApromptCoverShow) {
+            0% {
+              @include opacity(0);
+            }
+            100% {
+              @include opacity(1);
+            }
+          }
+        }
+        .wrapper {
+          top: calc(20%);
+          @include opacity(1);
+
+          @include animation(OApromptWrapperShow .3s);
+          @include keyframes(OApromptWrapperShow) {
+            0% {
+              top: -50%;
+              @include opacity(0);
+            }
+            100% {
+              top: calc(20%);
+              @include opacity(1);
+            }
+          }
+        }
+      }
 
       .cover {
         position: absolute;
@@ -518,20 +581,23 @@ html {
         left: 0;
         width: 100%;
         height: 100%;
-
         background-color: rgba(39, 40, 34, .5);
+        @include opacity(0);
+        @include transition(all .3s);
       }
       .wrapper {
         position: absolute;
-        top: calc(20%);
+        top: -50%;
         left: calc(50% - (350px / 2));
         display: inline-block;
         width: 350px;
-        height: 170px;
         background-color: white;
         border: 1px solid rgba(39, 40, 34, .6);
+        @include opacity(0);
         @include box-shadow(0 3px 25px rgba(39, 40, 34, .5));
         @include border-radius(3px);
+        @include transition(all .3s);
+
         @media screen and (min-width: 0) and (max-width: #{$mediaTabletWidth - 1px}) {
           left: 20px;
           width: calc(100% - 40px);
@@ -540,7 +606,7 @@ html {
         .title {
           padding: 18px;
           padding-bottom: 10px;
-          
+
           text-align: left;
           color: rgba(39, 40, 34, .8);
           font-weight: bold;
@@ -551,19 +617,19 @@ html {
           padding: 0 18px;
           margin-top: 15px;
           text-align: left;
-          
+
           input {
             @include input();
             width: 100%;
             margin-top: 15px;
-  
+
             &, &:focus {
               border-top: 0;
               border-left: 0;
               border-right: 0;
               @include box-shadow(none);
             }
-            &:focus {
+            &.val, &:focus {
               + label {
                 top: 0;
                 font-size: 13px;

@@ -106,7 +106,7 @@
           @include border-radius(2px);
           @include transition(all .3s);
         }
-        
+
         &:after {
           top: calc((100% - 45px) / 2 - 15px);
           left: calc((100% - 3px) / 2);
@@ -125,7 +125,7 @@
             top: calc((100% - 6px) / 2 - 15px);
             height: 6px;
           }
-          
+
           &:after {
             left: calc((100% - 6px) / 2);
             width: 6px;
