@@ -278,7 +278,9 @@
         @include border-radius(0);
         @include text-shadow(none);
         @include transition(all .3s);
-
+        &.hide {
+          display: none;
+        }
         &:focus {
           outline: 0;
         }

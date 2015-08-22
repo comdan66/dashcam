@@ -12,6 +12,7 @@ class Help extends Site_controller {
   }
 
   public function index () {
-    $this->load_view (null);
+    $this->set_method ('1')
+         ->load_view (null);
   }
 }

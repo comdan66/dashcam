@@ -23,9 +23,6 @@
         </div>
         <div class='cover'></div>
         <div class='wrapper_right'>
-    <!-- <div id='xxx'>ad</div> -->
-    <button id='xx'>ddd</button>
-
           <?php echo isset ($content) ? $content : ''; ?>
         </div>
       </div>

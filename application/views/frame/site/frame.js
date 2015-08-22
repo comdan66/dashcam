@@ -35,11 +35,11 @@ $(function () {
     if (window.$OAprompt.length < 1) {
       var close = function () {
         window.$OAprompt.removeClass ('show_animation').addClass ('hide_animation');
-        clearTimeout (window.$OAprompt.timer);
-        window.$OAprompt.timer = setTimeout (function () {
-          window.$OAprompt.attr ('class', 'OAprompt');
-          $OAprompt.find ('input').val ('');
-        }, 500);
+        if (!window.$OAprompt.timer)
+          window.$OAprompt.timer = setTimeout (function () {
+            window.$OAprompt.attr ('class', 'OAprompt');
+            $OAprompt.find ('input').val ('');
+          }, 500);
       };
 
       var $title = $('<div />').addClass ('title');
@@ -47,9 +47,10 @@ $(function () {
         if ($(this).val ().length > 0) $(this).addClass ('val');
         else $(this).removeClass ('val');
 
-        if ((e.keyCode == '13')) {
+        if ((e.keyCode == '13') && !window.$OAprompt.ok) {
           if (ok)
             ok ($(this));
+          window.$OAprompt.ok = true;
           close ();
         }
         if ((e.keyCode == '27')) {
@@ -71,28 +72,4 @@ $(function () {
     window.$OAprompt.find ('label').text (placeholder);
     window.$OAprompt.addClass ('show').addClass ('show_animation').find ('input').focus ();
   };
-
-  $('#xx').click (function () {
-
-    OAprompt ('title', 'placeholder', function ($input) {
-      // 按確定
-    }, function () {
-      // 取消
-    });
-
-  });
-  // setTimeout (function () {
-
-  //   OAprompt ('title', 'placeholder', function () {
-
-  //   });
-  // }, 1000);
-  // setTimeout (function () {
-
-  //   OAprompt ('title', 'placeholder', function () {
-
-  //   });
-  // }, 5000);
-//console.error ();
-
 });

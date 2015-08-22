@@ -6,105 +6,105 @@
   <div class='tags'>
     <div class='add'><div></div><div></div><div></div><div></div><div>新增分類</div></div>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>事故</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value='' checked/><div>台北</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>機車</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>十字路口</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>事故</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value='' checked/><div>台北</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>機車</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>十字路口</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>事故</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value='' checked/><div>台北</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>機車</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>十字路口</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>事故</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value='' checked/><div>台北</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>機車</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>十字路口</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>事故</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value='' checked/><div>台北</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>機車</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>十字路口</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>事故</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value='' checked/><div>台北</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>機車</div>
     </label>
 
-    <label class='tag'>
+    <label>
       <input type='checkbox' value=''/><div>十字路口</div>
     </label>
 
   </div>
   <div class='steps'>
-    <button href=''>上一步</button>
-    <button href=''>下一步</button>
+    <button class='hide'>上一步</button>
+    <button class=''>下一步</button>
   </div>
 </div>
