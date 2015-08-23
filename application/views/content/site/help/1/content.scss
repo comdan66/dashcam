@@ -40,10 +40,10 @@
       display: inline-block;
       width: 100%;
 
-      @media screen and (min-width: 0) and (max-width: #{$mediaTabletWidth - 1px}) {
+      @media screen and (min-width: 0) and (max-width: #{800px - 1px}) {
         margin-top: 20px;
       }
-      @media screen and (min-width: $mediaTabletWidth) {
+      @media screen and (min-width: 800px) {
         margin-top: 50px;
         @include split-left(40%, '.info', '.calendar');
       }
@@ -57,10 +57,10 @@
         color: rgba(255, 255, 255, 1);
         font-size: 30px;
         @include border-radius(3px);
-        @media screen and (min-width: 0) and (max-width: #{$mediaTabletWidth - 1px}) {
+        @media screen and (min-width: 0) and (max-width: #{800px - 1px}) {
           display: none;
         }
-        @media screen and (min-width: $mediaTabletWidth) {
+        @media screen and (min-width: 800px) {
           margin-top: 10px;
         }
         .year {
@@ -108,6 +108,7 @@
             color: rgba(39, 40, 34, .5);
             overflow: hidden;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             @include opacity(0);
             @include transition(all .3s);
             @include box-shadow(0 1px 5px rgba(39, 40, 34, .2));
@@ -139,7 +140,7 @@
         }
       }
       .calendar {
-        @media screen and (min-width: 0) and (max-width: #{$mediaTabletWidth - 1px}) {
+        @media screen and (min-width: $mediaMobileWidth) and (max-width: #{$mediaTabletWidth - 1px}) {
           padding: 0 20px;
         }
         @media screen and (min-width: $mediaTabletWidth) {
@@ -161,7 +162,7 @@
               width: calc(100% - 100px);
               @include clearfix();
               @include overflow-docx3();
-              
+
               > div {
                 float: left;
                 width: 50%;
@@ -203,9 +204,15 @@
             width: 100%;
             background-color: rgba(255, 255, 255, 1);
             @include transition(all .3s);
+
             @for $i from 1 through 3 {
               &:nth-child(#{$i}) {
-                left: #{($i - 2) * 100%}
+                left: #{($i - 2) * 100%};
+                @if($i == 2) {
+                  @include opacity(1);
+                } @else {
+                  @include opacity(0);
+                }
               }
             }
 
@@ -225,7 +232,7 @@
                 @include transition(all .3s);
                 @include overflow-docx3();
                 
-                @for $i from 6 through 11 {
+                @for $i from 6 through 9 {
                   @media screen and (min-width: #{$i * 70px + 50px}) and (max-width: #{(($i + 1) * 70px + 50px) - 1px}) {
                     @if($i > 1){
                       margin: 0 #{($i - 2) * 4px};
@@ -234,9 +241,17 @@
                   }
                 }
 
+                @media screen and (min-width: 750px) and (max-width: #{800px - 1px}) {
+                  margin: 0 20px;
+                  width: calc(100% / 7 - 20px * 2);
+                }
+                @media screen and (min-width: 800px) and (max-width: #{890px - 1px}) {
+                  margin: 0 10px;
+                  width: calc(100% / 7 - 10px * 2);
+                }
                 @media screen and (min-width: 890px) and (max-width: #{$mediaTabletWidth - 1px}) {
-                  margin: 0 40px;
-                  width: calc(100% / 7 - 40px * 2);
+                  margin: 0 10px;
+                  width: calc(100% / 7 - 10px * 2);
                 }
                 @media screen and (min-width: $mediaTabletWidth) and (max-width: #{995px - 1px}) {
                   margin: 0 4px;
