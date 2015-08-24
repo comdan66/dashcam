@@ -36,6 +36,7 @@ class Site_controller extends Oa_controller {
 
   private function _add_js () {
     return $this->add_js (base_url ('resource', 'javascript', 'jquery_v1.10.2', 'jquery-1.10.2.min.js'))
+                ->add_js ('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=zh-TW&libraries=places')
                 ;
   }
 }
