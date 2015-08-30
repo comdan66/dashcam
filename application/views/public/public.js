@@ -21,4 +21,23 @@ window.ajaxError = function (result) {
 };
 
 $(function () {
+  window.mainLoading = $('#loading');
+
+  window.hideLoading = function (callback) {
+    this.mainLoading.addClass ('hide').fadeOut (function () {
+      $(this).hide (function () {
+        if (callback)
+          callback ();
+      });
+    });
+  };
+
+  window.closeLoading = function (callback) {
+    window.hideLoading (function  () {
+      if (callback)
+        callback ();
+        window.mainLoading.remove ();
+    });
+  };
+window.closeLoading ();
 });
