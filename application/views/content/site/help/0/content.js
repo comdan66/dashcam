@@ -4,4 +4,11 @@
  */
 
 $(function () {
+  autosize ($('textarea.autosize'));
+  $('.row input, .row textarea').keyup (function (e) {
+    if ($(this).val ().length > 0)
+      $(this).addClass ('val');
+    else
+      $(this).removeClass ('val');
+  }).keyup ();
 });

@@ -6,16 +6,16 @@
   <div class='datas'>
     <div class='row'>
       <input type='text' name='nickname' id='nickname' value='' />
-      <label for='title'>輸入暱稱</label>
+      <label for='nickname'>輸入暱稱</label>
     </div>
     <div class='row'>
       <input type='text' name='title' id='title' value='' />
       <label for='title'>輸入標題</label>
     </div>
 
-    <div class='row'>
-      <textarea></textarea>
-      <label for='title'>輸入標題</label>
+    <div class='row textarea'>
+      <textarea class='autosize' name='desc' id='desc'></textarea>
+      <label for='desc'>請稍微描述一下當天狀況以及需求。</label>
     </div>
 
   </div>

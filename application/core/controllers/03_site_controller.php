@@ -26,7 +26,7 @@ class Site_controller extends Oa_controller {
   }
 
   private function _add_meta () {
-    return $this;
+    return $this->add_meta (array ('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui'));
   }
 
   private function _add_css () {
@@ -35,6 +35,7 @@ class Site_controller extends Oa_controller {
 
   private function _add_js () {
     return $this->add_js (base_url ('resource', 'javascript', 'jquery_v1.10.2', 'jquery-1.10.2.min.js'))
+                ->add_js (base_url ('resource', 'javascript', 'autosize_v3.0.8', 'autosize.min.js'))
                 ;
   }
 }
