@@ -38,4 +38,21 @@ class Site_cell extends Cell_Controller {
     return $this->load_view (array (
       ));
   }
+
+  /* render_cell ('site_cell', 'loading', var1, ..); */
+  // public function loading () {
+  //   return array ('time' => 60 * 60, 'key' => null);
+  // }
+  public function loading () {
+    return $this->load_view ();
+  }
+
+  /* render_cell ('site_cell', 'footer', var1, ..); */
+  // public function footer () {
+  //   return array ('time' => 60 * 60, 'key' => null);
+  // }
+  public function footer () {
+    return $this->load_view (array (
+      ));
+  }
 }

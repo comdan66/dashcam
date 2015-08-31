@@ -30,17 +30,9 @@
 
     <div id='action' class='icon-plus'></div>
 
-    <div id="footer">
-      <div class="l"></div>
-      <div class="c"><div>ERD © 2015</div><div>如有相關問題歡迎與<a href="https://www.facebook.com/comdan66" target="_blank">作者</a>討論。</div></div>
-      <div class="r"></div>
-    </div>
+    <?php echo render_cell ('site_cell', 'loading');?>
 
-    <div id='loading'>
-      <svg class="svg" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-         <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-      </svg>
-    </div>
+    <?php echo render_cell ('site_cell', 'footer');?>
 
   </body>
 </html>
