@@ -108,7 +108,7 @@ class Root_controller extends CI_Controller {
     return $this;
   }
 
-  protected function load_content ($data = '', $return = false) {
+  protected function load_content ($data = array (), $return = false) {
     if (!is_readable ($abs_path = FCPATH . implode (DIRECTORY_SEPARATOR, array_merge ($this->get_views_path (), $this->get_content_path (), array ($this->get_class (), $this->get_method (), 'content.php')))))
       return show_error ('Can not find content file. path: ' . $abs_path);
     else

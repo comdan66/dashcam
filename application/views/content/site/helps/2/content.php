@@ -1,5 +1,6 @@
-<form id='content' method='post' data-prev='<?php echo base_url ('help', $step - 1);?>' data-next='<?php echo base_url ('help', $step + 1);?>'>
+<form id='content' method='post' data-prev='<?php echo base_url ('helps', 'step', $step - 1);?>' data-next='<?php echo base_url ('helps', 'step', $step + 1);?>'>
   <input type='hidden' name='nickname' value='<?php echo $nickname;?>' />
+  <input type='hidden' name='email' value='<?php echo $email;?>' />
   <input type='hidden' name='title' value='<?php echo $title;?>' />
   <input type='hidden' name='address' value='<?php echo $address;?>' />
   <input type='hidden' name='desc' value='<?php echo $desc;?>' />
@@ -19,9 +20,7 @@
   <input type='hidden' id='lat' name='lat' value='<?php echo $lat;?>' />
   <input type='hidden' id='lng' name='lng' value='<?php echo $lng;?>' />
 
-  <h1>挑選一下日期</h1>
-  <h2>挑選日期讓系統知道！</h2>
-  <h2 class='mobile'>挑選日期讓系統知道！</h2>
+  <h1>選擇日期</h1>
 
   <div class='datepicker'>
 

@@ -18,7 +18,7 @@ class Site_cell extends Cell_Controller {
     $item_lists = array (
       '主選單' => array (
           array ('name' => '首頁', 'href' => base_url (), 'icon' => 'icon-home', 'target' => '_self', 'visible' => true, 'active' => ($class == 'main') && ($method == 'index')),
-          array ('name' => '徵求影片', 'href' => base_url ('help'), 'icon' => 'icon-binoculars2', 'target' => '_self', 'visible' => true, 'active' => ($class == 'help')),
+          array ('name' => '徵求影片', 'href' => base_url ('helps', 'step'), 'icon' => 'icon-binoculars2', 'target' => '_self', 'visible' => true, 'active' => ($class == 'help')),
         ),
       '次選單' => array (
           array ('name' => '首頁', 'href' => base_url (), 'icon' => 'icon-home', 'target' => '_self', 'visible' => true, 'active' => false),

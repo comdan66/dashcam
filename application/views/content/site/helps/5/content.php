@@ -1,5 +1,6 @@
-<form id='content' method='post' data-prev='<?php echo base_url ('help', $step - 1);?>' data-next='<?php echo base_url ('help', $step + 1);?>'>
+<form id='content' method='post' data-prev='<?php echo base_url ('helps', 'step', $step - 1);?>' data-next='<?php echo base_url ('helps', 'submit');?>'>
   <input type='hidden' name='nickname' value='<?php echo $nickname;?>' />
+  <input type='hidden' name='email' value='<?php echo $email;?>' />
   <input type='hidden' name='title' value='<?php echo $title;?>' />
   <input type='hidden' name='address' value='<?php echo $address;?>' />
   <input type='hidden' name='desc' value='<?php echo $desc;?>' />
@@ -19,8 +20,8 @@
   <input type='hidden' id='lng' name='lng' value='<?php echo $lng;?>' />
 
   <h1>最後確認</h1>
-  <h2>！</h2>
-  <h2 class='mobile'>選擇地點讓系統知道！</h2>
+  <h2>請確認以下內容，如果無誤，請按”確認“，當有符合的影片時，系統會發信通知您。</h2>
+  <h2 class='mobile'>請確認以下內容，如果無誤，請按”確認“，當有符合的影片時，系統會發信通知您。</h2>
 
 
   <div class='steps'>

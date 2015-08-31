@@ -11,4 +11,9 @@ $(function () {
     else
       $(this).removeClass ('val');
   }).keyup ();
+  
+  $('.steps button').click (function () {
+    window.showLoading ();
+  });
+  window.hideLoading ();
 });

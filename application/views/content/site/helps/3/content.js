@@ -25,8 +25,10 @@ $(function () {
 
 
   $('.steps button').click (function () {
+    window.showLoading ();
     $hour.val ($hourDiv.data ('val'));
     $min.val ($minDiv.data ('val'));
   });
-  window.closeLoading ();
+
+  window.hideLoading ();
 });

@@ -19,10 +19,12 @@ $(function () {
 
   $('input[type="hidden"][name="tags[]"]').each (function () {
     $("input[type='checkbox'][name='tags[]'][value='" + $(this).val () + "']").prop ('checked', true);
-    console.error ();
-
   });
-
-
-  window.closeLoading ();
+  
+  $('.steps button').click (function () {
+    
+    window.showLoading ();
+  });
+  
+  window.hideLoading ();
 });

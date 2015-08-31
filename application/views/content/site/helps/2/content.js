@@ -96,9 +96,11 @@ $(function () {
 
   $('#action').hide ();
   $('.steps button').click (function () {
+    window.showLoading ();
     $year.val (_year);
     $month.val (_month);
     $day.val (_day);
   });
-  window.closeLoading ();
+
+  window.hideLoading ();
 });

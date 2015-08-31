@@ -23,6 +23,14 @@ window.ajaxError = function (result) {
 $(function () {
   window.mainLoading = $('#loading');
 
+  window.showLoading = function (callback) {
+    this.mainLoading.fadeIn (function () {
+      $(this).removeClass ('hide');
+      if (callback)
+        callback ();
+    });
+  };
+
   window.hideLoading = function (callback) {
     this.mainLoading.addClass ('hide').fadeOut (function () {
       $(this).hide (function () {
@@ -39,5 +47,4 @@ $(function () {
         window.mainLoading.remove ();
     });
   };
-window.closeLoading ();
 });

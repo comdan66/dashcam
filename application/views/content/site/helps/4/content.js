@@ -120,9 +120,13 @@ $(function () {
 
     _searchBox = new google.maps.places.SearchBox($search.get (0));
     _searchBox.addListener('places_changed', loadPlaces);
+
+    $('.steps button').click (function () {
+      window.showLoading ();
+    });
+    window.hideLoading ();
   }
 
   google.maps.event.addDomListener (window, 'load', initialize);
 
-  window.closeLoading ();
 });
