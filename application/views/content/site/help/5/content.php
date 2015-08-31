@@ -12,41 +12,16 @@
   <input type='hidden' name='month' value='<?php echo $month;?>' />
   <input type='hidden' name='day' value='<?php echo $day;?>' />
 
-  <input type='hidden' id='hour' name='hour' value='<?php echo $hour ? $hour : date ('H');?>' />
-  <input type='hidden' id='min' name='min' value='<?php echo $min ? $min : date ('i');?>' />
+  <input type='hidden' id='hour' name='hour' value='<?php echo $hour;?>' />
+  <input type='hidden' id='min' name='min' value='<?php echo $min;?>' />
 
   <input type='hidden' id='lat' name='lat' value='<?php echo $lat;?>' />
   <input type='hidden' id='lng' name='lng' value='<?php echo $lng;?>' />
 
-  <h1>挑選一下時間</h1>
-  <h2>請選擇一個大約時間！</h2>
-  <h2 class='mobile'>請選擇一個大約時間！</h2>
+  <h1>最後確認</h1>
+  <h2>！</h2>
+  <h2 class='mobile'>選擇地點讓系統知道！</h2>
 
-  <div class='time'>
-    <div class='arrows t'>
-      <a class='h icon-chevron-right'></a>
-      <a class='m icon-chevron-right'></a>
-    </div>
-
-    <div class='leafs'>
-      <div class='hour'>
-  <?php for ($i = 0; $i < 24; $i++) { ?>
-          <div><?php echo sprintf ('%02d', ($i + 1));?><span>時</span></div>
-  <?php } ?>
-      </div>
-      <div class='min'>
-  <?php for ($i = 0; $i < 60; $i++) { ?>
-          <div><?php echo sprintf ('%02d', $i + 1);?><span>分</span></div>
-  <?php } ?>
-      </div>
-    </div>
-
-    <div class='arrows b'>
-      <a class='h icon-chevron-right'></a>
-      <a class='m icon-chevron-right'></a>
-    </div>
-
-  </div>
 
   <div class='steps'>
     <button type='submit' class=''>上一步</button>

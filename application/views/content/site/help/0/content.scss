@@ -41,6 +41,10 @@
               bottom: calc(100% - 10px);
               font-size: 14px;
               color: rgba(9, 111, 202, 1);
+
+              &:after {
+                @include opacity(0);
+              }
             }
           }
         }
@@ -63,6 +67,10 @@
               bottom: calc(100% - 10px);
               font-size: 14px;
               color: rgba(9, 111, 202, 1);
+
+              &:after {
+                @include opacity(0);
+              }
             }
           }
         }
@@ -73,7 +81,13 @@
           display: inline-block;
           color: rgba(0, 0, 0, 0.326);
           cursor: text;
-          @include transition(all .2s);
+          @include transition(all .3s);
+
+          &:after {
+            content: '' attr(data-tip);
+            @include opacity(1);
+            @include transition(all .3s);
+          }
         }
       }
     }

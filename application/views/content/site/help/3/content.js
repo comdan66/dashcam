@@ -4,121 +4,29 @@
  */
 
 $(function () {
-  var $maps = $('.maps');
-  var $map = $('#map');
-  var $view = $('#view');
-  var $search = $('#search');
-  var $showView = $('#show_view');
-  var _map = null;
-  var _panorama = null;
-  var _searchBox = null;
-  var _marker = null;
+  var $hour = $('#hour');
+  var $min = $('#min');
 
-  $('#action').hide ();
+  var $hourDiv = $('.leafs .hour').attr ('data-val', $hour.val ());
+  var $minDiv = $('.leafs .min').attr ('data-val', $min.val ());
 
-  function loadPlaces () {
-    var places = _searchBox.getPlaces ();
-    if (places.length === 0) return;
-
-    if ($search.markers)
-      $search.markers.forEach (function (m) { m.setMap (null); });
-
-    $search.markers = [];
-
-    var bounds = new google.maps.LatLngBounds ();
-
-    places.forEach (function (place) {
-      $search.markers.push (new google.maps.Marker ({
-        map: _map,
-        icon: {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
-        },
-        title: place.name,
-        position: place.geometry.location
-      }));
-
-      if (place.geometry.viewport) bounds.union(place.geometry.viewport);
-      else bounds.extend(place.geometry.location);
-    });
-    _map.fitBounds(bounds);
-  }
-
-  function updateForm (position) {
-    new google.maps.Geocoder ().geocode ({'latLng': position}, function (result, status) {
-    });
-
-    // _map.setCenter (position);
-
-    _panorama.setPosition (position);
-    new google.maps.StreetViewService ().getPanoramaByLocation (position, 100, function (data, status) {
-      if (status != google.maps.StreetViewStatus.OK) {
-        _panorama.setVisible (false);
-        $showView.removeClass ('show');
-      } else {
-        _panorama.setVisible (true);
-        $showView.addClass ('show');
-      }
-    });
-  }
-  function initialize () {
-
-    var position = new google.maps.LatLng (25.04, 121.55);
-
-    _panorama = new google.maps.StreetViewPanorama ($view.get (0), {
-      linksControl: true,
-      addressControl: false,
-      position: position,
-      pov: {
-        heading: 0,
-        pitch: 0,
-        zoom: 0
-      }
-    });
-
-    _map = new google.maps.Map ($map.get (0), {
-        zoom: 18,
-        zoomControl: true,
-        scrollwheel: true,
-        scaleControl: true,
-        streetView: _panorama,
-        mapTypeControl: false,
-        navigationControl: true,
-        center: position,
-        streetViewControl: false,
-        disableDoubleClickZoom: true,
-      });
-
-    _marker = new google.maps.Marker ({
-        map: _map,
-        draggable: true,
-        position: position
-      });
-
-    google.maps.event.addListener (_marker, 'dragend', function () {
-      updateForm (_marker.position);
-    });
-    google.maps.event.addListener(_map, 'click', function (e) {
-      _marker.setPosition (e.latLng);
-      updateForm (_marker.position);
-    });
+  $('.arrows.t .h').click (function () {
+    $hourDiv.attr ('data-val', parseInt ($hourDiv.attr ('data-val'), 10) % 23 + 1);
+  });
+  $('.arrows.b .h').click (function () {
+    $hourDiv.attr ('data-val', (parseInt ($hourDiv.attr ('data-val'), 10) + 21) % 23 + 1);
+  });
+  $('.arrows.t .m').click (function () {
+    $minDiv.attr ('data-val', parseInt ($minDiv.attr ('data-val'), 10) % 59 + 1);
+  });
+  $('.arrows.b .m').click (function () {
+    $minDiv.attr ('data-val', (parseInt ($minDiv.attr ('data-val'), 10) + 57) % 59 + 1);
+  });
 
 
-    $showView.addClass ('show').click (function () { $maps.toggleClass ('view'); });
-
-    // google.maps.event.addListener (_panorama, 'visible_changed', function () {
-    //   if (this.getVisible ()) $showView.addClass ('show');
-    //   else $showView.removeClass ('show');
-    // });
-
-    _searchBox = new google.maps.places.SearchBox($search.get (0));
-    _searchBox.addListener('places_changed', loadPlaces);
-  }
-
-  google.maps.event.addDomListener (window, 'load', initialize);
-
+  $('.steps button').click (function () {
+    $hour.val ($hourDiv.data ('val'));
+    $min.val ($minDiv.data ('val'));
+  });
   window.closeLoading ();
 });

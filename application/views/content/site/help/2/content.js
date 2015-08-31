@@ -12,6 +12,10 @@ $(function () {
   var $infoDay = $('.datepicker .info .date .day');
   var $infoWeek = $('.datepicker .info .date .week');
 
+  var $year = $('#year');
+  var $month = $('#month');
+  var $day = $('#day');
+
   function monthDayCount (y, m) {
     return (m == 1) ? ((y % 4) === 0) && ((y % 100) !== 0) || ((y % 400) === 0) ? 29 : 28 : [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m];
   }
@@ -19,7 +23,7 @@ $(function () {
     var f = new Date(y, --m, 1).getDay ();
     var mc = monthDayCount(y, m);
     var wc = parseInt ((f + mc) / 7, 10) + (((f + mc) % 7) ? 1 : 0);
-    
+
     return $('<div />').addClass ('month').append (Array.apply (null, Array (wc)).map (function (_, i) {
       return $('<div />').addClass ('week').append (Array.apply (null, Array (7)).map (function (_, j) {
         var d = i * 7 + j;
@@ -43,9 +47,9 @@ $(function () {
   }
 
   function initMonth (y, m, d) {
-    _year = y ? y : _year;
-    _month = m ? m : _month;
-    _day = d ? d : _day;
+    _year = y ? parseInt (y, 10) : _year;
+    _month = m ? parseInt (m, 10) : _month;
+    _day = d ? parseInt (d, 10) : _day;
 
     $months.empty ()
            .append (createMonth (_month == 1 ? _year - 1 : _year, _month == 1 ? 12 : _month - 1))
@@ -65,9 +69,8 @@ $(function () {
     initMonth ($(this).data ('year'));
   });
 
-  var date = new Date ();
-  initMonth (date.getFullYear (), date.getMonth () + 1, date.getDate ());
-  
+  initMonth ($year.val (), $month.val (), $day.val ());
+
   $('.icon-chevron-right').click (function () {
     var d = monthDayCount (_year, _month);
     _day = _day > d ? d : _day;
@@ -82,16 +85,20 @@ $(function () {
     _day = _day > d ? d : _day;
     _year -= (_month = !(_month = _month - 1) ? 12 : _month) == 12 ? 1 : 0;
     createMonth (_month == 1 ? _year - 1 : _year, _month == 1 ? 12 : _month - 1).prependTo ('.months');
-    
+
     $months.find ('.month').last ().remove ();
     $months.find ('.month .day[data-year="' + _year + '"][data-month="' + _month + '"][data-day="' + _day + '"]').click ();
   });
-  
+
   $('.datepicker .calendar > .week').append (['日', '一', '二', '三', '四', '五', '六'].map (function (t) {
     return $('<div />').addClass ('day').text (t);
   }));
 
   $('#action').hide ();
-
+  $('.steps button').click (function () {
+    $year.val (_year);
+    $month.val (_month);
+    $day.val (_day);
+  });
   window.closeLoading ();
 });

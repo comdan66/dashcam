@@ -11,11 +11,18 @@ $(function () {
       var length = $('.tags label input + div').filter (function () {
         return $(this).text ().trim () == name;
       }).length;
-      
+
       if (name && !length)
-        $('<label />').append ($('<input />').attr ('type', 'checkbox').attr ('name', 'tags[]').prop ('checked', true)).append ($('<div />').text (name)).insertAfter ($(this));
+        $('<label />').append ($('<input />').attr ('type', 'checkbox').attr ('name', 'tags[]').val (name).prop ('checked', true)).append ($('<div />').text (name)).insertAfter ($(this));
     }.bind ($(this)));
   });
+
+  $('input[type="hidden"][name="tags[]"]').each (function () {
+    $("input[type='checkbox'][name='tags[]'][value='" + $(this).val () + "']").prop ('checked', true);
+    console.error ();
+
+  });
+
 
   window.closeLoading ();
 });

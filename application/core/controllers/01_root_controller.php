@@ -13,6 +13,8 @@ class Root_controller extends CI_Controller {
   private $views_path       = array ();
   private $libraries_path   = array ();
 
+  private $param = array ();
+
   public function __construct () {
     parent::__construct ();
 
@@ -79,7 +81,7 @@ class Root_controller extends CI_Controller {
   public function get_views_path () {
     return $this->views_path;
   }
-  
+
   protected function input_gets ($xss_clean = true) {
     $security = $this->security;
     return ($gets = $this->input->get ()) ? array_filter ($this->input->get (), function ($get) use ($xss_clean, $security) {
@@ -101,13 +103,18 @@ class Root_controller extends CI_Controller {
     return ($matches = $matches['var'] ? $matches['var'][0] : null) ? get_upload_file ($matches) : get_upload_file ($index, 'one');
   }
 
+  public function add_param ($key, $value) {
+    $this->param = array_merge ($this->param, array($key => $value));
+    return $this;
+  }
+
   protected function load_content ($data = '', $return = false) {
     if (!is_readable ($abs_path = FCPATH . implode (DIRECTORY_SEPARATOR, array_merge ($this->get_views_path (), $this->get_content_path (), array ($this->get_class (), $this->get_method (), 'content.php')))))
       return show_error ('Can not find content file. path: ' . $abs_path);
     else
       $path = implode (DIRECTORY_SEPARATOR, array_merge ($this->get_content_path (), array ($this->get_class (), $this->get_method (), 'content.php')));
 
-    if ($return) return $this->load->view ($path, $data, $return);
-    else $this->load->view ($path, $data, $return);
+    if ($return) return $this->load->view ($path, array_merge ($data, $this->param), $return);
+    else $this->load->view ($path, array_merge ($data, $this->param), $return);
   }
 }
