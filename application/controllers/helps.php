@@ -20,12 +20,22 @@ class Helps extends Site_controller {
         !($lat && $lng)
       );
     for ($i = 0; $i < $step; $i++)
-      if ($bools[$i])
+      if (isset ($bools[$i]) && ($bools[$i]))
         return $i;
 
     return $step;
   }
+
+  public function result () {
+    $status = identity ()->get_session ('_status', true);
+
+    $this->load_view (array (
+            'status' => $status
+          ));
+  }
+
   public function submit () {
+    $step = 6;
 
     $nickname = trim ($this->input_post ('nickname'));
     $email = trim ($this->input_post ('email'));
@@ -41,9 +51,35 @@ class Helps extends Site_controller {
     $lat = trim ($this->input_post ('lat'));
     $lng = trim ($this->input_post ('lng'));
 
-echo '<meta http-equiv="Content-type" content="text/html; charset=utf-8" /><pre>';
-var_dump ();
-exit ();
+    if ($step != ($s = $this->_check (6, $nickname, $email, $title, $address, $desc, $tags, $year, $month, $day, $hour, $min, $lat, $lng))) {
+      return $this->step ($s);
+    }
+
+    $params = array (
+        'title' => $title,
+        'nickname' => $nickname,
+        'address' => $address,
+        'email' => $email,
+        'description' => $desc,
+        'tags_string' => implode (' ', $tags),
+        'latitude' => $lat,
+        'longitude' => $lng,
+        'send_enabled' => 1,
+        'time' => sprintf ('%02d-%02d-%02d %02d:%02d:00', $year, $month, $day, $hour, $min),
+      );
+
+    if (!verifyCreateOrm ($help = Help::create ($params))) {
+
+      foreach ($tags as $tag)
+        @Tag::create ($tag);
+
+      return identity ()->set_session ('_status', false, true)
+                        && redirect (array ('helps', 'result'), 'refresh');
+    }
+
+    return identity ()->set_session ('_status', true, true)
+                      && redirect (array ('helps', 'result'), 'refresh');
+
   }
   public function step ($step = 0) {
 
@@ -68,7 +104,7 @@ exit ();
     if ($step == 1) {
       $limit = 10;
       $this->load->library ('Scws');
-      
+
       $scws_tags = Scws::explode ($title . $desc, 5);
 
       if (!($year && $month && $day))
@@ -95,6 +131,9 @@ exit ();
           $lng = $result['results'][0]['geometry']['location']['lng'];
         }
       }
+      $this->add_js ('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=zh-TW&libraries=places');
+    }
+    if ($step == 5) {
       $this->add_js ('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=zh-TW&libraries=places');
     }
     $this->add_css (base_url ('application', 'views', 'content', 'site', 'helps', 'step.css'), false)

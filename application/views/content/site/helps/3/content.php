@@ -37,7 +37,7 @@
       </div>
       <div class='min'>
   <?php for ($i = 0; $i < 60; $i++) { ?>
-          <div><?php echo sprintf ('%02d', $i + 1);?><span>分</span></div>
+          <div><?php echo sprintf ('%02d', $i);?><span>分</span></div>
   <?php } ?>
       </div>
     </div>

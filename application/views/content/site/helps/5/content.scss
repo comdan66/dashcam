@@ -8,6 +8,105 @@
 .wrapper_right {
 
   #content {
+    @media screen and (min-width: 0px) and (max-width: #{$mediaMobileWidth - 1px}) {
+      .row {
+        text-align: left;
+        margin-top: 20px;
 
+        &.top_line {
+
+        }
+        h3, > div {
+          margin: 0;
+          @include overflow-docx3();
+        }
+        h3 {
+          > span {
+            font-size: 12px;
+            margin-right: 20px;
+            color: rgba(39, 39, 34, .4);
+          }
+        }
+        > div {
+          margin-top: 2px;
+          padding-bottom: 3px;
+          padding: 5px;
+          border-bottom: 2px solid rgba(39, 39, 34, .05);
+
+          &.map {
+            margin: 10px;
+            height: 200px;
+            border: 1px solid rgba(39, 39, 34, .2);
+            @include border-radius(2px);
+          }
+          &.desc {
+            word-break: break-all;
+            white-space: normal;
+            height: auto;
+            @include clearfix();
+
+            > div {
+              float: left;
+              display: inline-block;
+              border: 1px solid rgba(201, 202, 200, 1);
+              padding: 0 5px;
+              @include border-radius(2px);
+              margin: 0 3px 3px 0;
+            }
+          }
+        }
+      }
+
+    }
+    @media screen and (min-width: $mediaMobileWidth) {
+      .row {
+        @include split-left(85px, 'h3', '> div');
+        padding: 5px 10px;
+        margin-top: 10px;
+        padding-right: 15px;
+        padding-left: 5px;
+
+        &.top_line {
+          border-top: 2px solid rgba(39, 39, 34, .1);
+          padding-top: 20px;
+        }
+        h3, > div {
+          margin: 0;
+          @include overflow-docx3();
+        }
+        h3 {
+          text-align: right;
+          > span {
+            font-size: 12px;
+            margin-right: 20px;
+            color: rgba(39, 39, 34, .4);
+          }
+        }
+        > div {
+          text-align: left;
+          &.desc {
+            word-break: break-all;
+            white-space: normal;
+            height: auto;
+            @include clearfix();
+
+            > div {
+              float: left;
+              display: inline-block;
+              border: 1px solid rgba(201, 202, 200, 1);
+              padding: 0 5px;
+              @include border-radius(2px);
+              margin: 0 3px 3px 0;
+            }
+          }
+          &.map {
+            height: 400px;
+            border: 1px solid rgba(39, 39, 34, .2);
+            @include border-radius(2px);
+
+          }
+        }
+      }
+    }
   }
 }

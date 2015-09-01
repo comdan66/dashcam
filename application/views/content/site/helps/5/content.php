@@ -24,8 +24,47 @@
   <h2 class='mobile'>請確認以下內容，如果無誤，請按”確認“，當有符合的影片時，系統會發信通知您。</h2>
 
 
+  <div class='row top_line'>
+    <h3>暱稱：</h3>
+    <div><?php echo $nickname;?></div>
+  </div>
+  <div class='row'>
+    <h3>E-mail：<br/><span>(不會顯示)</span></h3>
+    <div class='email'><?php echo $email;?></div>
+  </div>
+  <div class='row'>
+    <h3>標題：</h3>
+    <div><?php echo $title;?></div>
+  </div>
+  <div class='row'>
+    <h3>地址：</h3>
+    <div><?php echo $address;?></div>
+  </div>
+  <div class='row'>
+    <h3>描述：</h3>
+    <div class='desc'><?php echo nl2br($desc);?></div>
+  </div>
+  <div class='row'>
+    <h3>分類：</h3>
+    <div class='desc'>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+      <div>das</div>
+    </div>
+  </div>
+  <div class='row'>
+    <h3>地圖：</h3>
+    <div class='map'></div>
+  </div>
+
   <div class='steps'>
-    <button type='submit' class=''>上一步</button>
-    <button type='submit' class=''>下一步</button>
+    <button type='submit' class=''>修改</button>
+    <button type='submit' class=''>確認</button>
   </div>
 </form>

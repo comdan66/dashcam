@@ -133,10 +133,10 @@
         .hour, .min {
           position: relative;
 
-          @for $i from 1 through 60 {
+          @for $i from 0 through 60 {
             &[data-val="#{$i}"] {
               > div {
-                &:nth-child(#{$i}) {
+                &:nth-child(#{$i + 1}) {
                   @include opacity(1);
                 }
               }
