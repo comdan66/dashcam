@@ -9,6 +9,7 @@ class Helps extends Site_controller {
 
   public function __construct () {
     parent::__construct ();
+
   }
 
   private function _check ($step, $nickname, $email, $title, $address, $desc, $tags, $year, $month, $day, $hour, $min, $lat, $lng) {
